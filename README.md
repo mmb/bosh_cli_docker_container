@@ -16,7 +16,7 @@ To persist your BOSH config outside the container:
 ```
 touch ~/.bosh_config
 
-docker run -it --rm -v ~/.bosh_config:/bosh_config -e BOSH_CONFIG=/bosh_config mm62/bosh_cli target
+docker run -it --rm -v ~/.bosh_config:/root/.bosh_config mm62/bosh_cli target
 ```
 
 To bump this repo to latest version of the BOSH CLI on rubygems.org:
