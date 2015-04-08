@@ -1,0 +1,17 @@
+#!/bin/bash
+
+set -e
+
+bundle update bosh_cli bosh_cli_plugin_micro bosh_cli_plugin_aws
+
+if [[ $(git diff --shortstat Gemfile.lock) != "" ]]; then
+  git add Gemfile.lock
+
+  NEW_VERSION=$(basename `bundle show bosh_cli`)
+  COMMIT_MSG="Update to $NEW_VERSION"
+  echo $COMMIT_MSG
+
+  git commit -m "$COMMIT_MSG"
+
+  git push
+fi
